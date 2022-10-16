@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registro">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ciudad" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="66dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/morselogopng" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="350dp"
+        android:layout_height="590dp"
+        android:backgroundTint="@color/dark_blue"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="594dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/registrarseLabel"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:typeface="normal" />
+
+            <TextView
+                android:id="@+id/usuarioTextView"
+                android:layout_width="325dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/usuarioLabel"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/usuario"
+                android:layout_width="325dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bgrey"
+                android:ems="10"
+                android:hint="Usuario"
+                android:inputType="textPersonName"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <TextView
+                android:id="@+id/contrasenaTextView"
+                android:layout_width="325dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/contrasenaLabel"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/contrasena"
+                android:layout_width="325dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bgrey"
+                android:drawableRight="@drawable/ic_baseline_visibility_off_24"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:longClickable="false"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+
+            <TextView
+                android:id="@+id/emailTextView"
+                android:layout_width="325dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/emailLabel"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="325dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bgrey"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/numTextView"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12.5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="12.5dp"
+                        android:text="@string/numLabel"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/fechaTextView"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12.5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="12.5dp"
+                        android:text="@string/fechaLabel"
+                        android:textColor="@color/white" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/numtel"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12.5dp"
+                        android:backgroundTint="@color/light_gray"
+                        android:ems="10"
+                        android:hint="+52"
+                        android:inputType="phone"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/second_text" />
+
+                    <EditText
+                        android:id="@+id/fechanac"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12.5dp"
+                        android:layout_marginRight="12.5dp"
+                        android:backgroundTint="@color/light_gray"
+                        android:ems="10"
+                        android:hint="día/mes/año"
+                        android:inputType="date"
+                        android:textColor="@color/light_gray"
+                        android:textColorHint="@color/second_text" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/fechaTextView3"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12.5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="12.5dp"
+                android:text="Género (Sexo)"
+                android:textColor="@color/white" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="12.5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Mujer"
+                    android:textColor="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Hombre"
+                    android:textColor="@color/white" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/mediosTextView"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12.5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="12.5dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/mediosLabel"
+                android:textColor="@color/white" />
+
+            <TableLayout
+                android:layout_width="361dp"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <CheckBox
+                        android:id="@+id/checkBox1"
+                        android:layout_width="90dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="12.5dp"
+                        android:text="Email"
+                        android:textColor="@color/white" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox2"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        android:text="Teléfono"
+                        android:textColor="@color/white" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox3"
+                        android:layout_width="130dp"
+                        android:layout_height="25dp"
+                        android:text="Redes Sociales"
+                        android:textColor="@color/white" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/fechaTextView4"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12.5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="12.5dp"
+                        android:text="@string/lugarLabel"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/fechaTextView5"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12.5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="12.5dp"
+                        android:text="@string/estudianteLabel"
+                        android:textColor="@color/white" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Spinner
+                        android:id="@+id/spinnerlugares"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12.5dp"
+                        android:backgroundTint="@color/light_gray"
+                        android:foregroundTint="@color/light_gray" />
+
+                    <Switch
+                        android:id="@+id/switch1"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12.5dp"
+                        android:backgroundTint="@color/light_gray"
+                        android:foregroundTint="@color/light_gray"
+                        android:text="¿Bátiz?"
+                        android:textColor="@color/second_text" />
+                </TableRow>
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/registrarbttn"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/light_gray"
+                android:text="@string/registrarseLabel"
+                android:textColor="@color/dark_blue" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <Button
+        android:id="@+id/loginbttn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/dark_blue"
+        android:text="@string/loginLabel"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

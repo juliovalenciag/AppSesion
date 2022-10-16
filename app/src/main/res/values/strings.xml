@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AppSesion</string>
+    <string name="usuarioLabel">Usuario</string>
+    <string name="contrasenaLabel">Contraseña</string>
+    <string name="emailLabel">Email</string>
+    <string name="numLabel">Número Telefónico</string>
+    <string name="fechaLabel">Fecha de nacimiento</string>
+    <string name="generoLabel">Género</string>
+    <string name="mediosLabel">Medios de contacto</string>
+    <string name="lugarLabel">Lugar</string>
+    <string name="estudianteLabel">Estudiante</string>
+    <string name="loginLabel">Iniciar sesión</string>
+    <string name="registrarseLabel">Registrarse</string>
+    <string name="olvide">¿Olvidaste tu contraseña?</string>
+
+</resources>
