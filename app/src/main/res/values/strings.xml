@@ -12,5 +12,7 @@
     <string name="loginLabel">Iniciar sesión</string>
     <string name="registrarseLabel">Registrarse</string>
     <string name="olvide">¿Olvidaste tu contraseña?</string>
+    <string name="welcome">Welcome to the jungle</string>
+
 
 </resources>

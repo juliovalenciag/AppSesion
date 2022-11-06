@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.example.appsesion.json.MyInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+import java.io.Serializable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -162,6 +162,7 @@ public class Login extends AppCompatActivity {
         for(MyInfo myInfo : list){
             if(myInfo.getUsuario().equals(usr)&&myInfo.getPassword().equals(pswd)){
                 Intent intent = new Intent(Login.this, Principal.class);
+                intent.putExtra("Objeto", myInfo);
                 startActivity(intent);
                 i=1;
             }
