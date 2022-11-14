@@ -8,11 +8,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 import com.example.appsesion.json.MyInfo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Principal extends AppCompatActivity {
+
+    private ListView listView;
+    private List<String> list;
+
     String aux;
-    MyInfo myInfo = null;
+    public static MyInfo myInfo = null;
     TextView textView;
 
     @Override
@@ -21,7 +31,7 @@ public class Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
-        textView= findViewById(R.id.textViewPrincipal);
+
         Intent intent = getIntent();
         if(intent != null) {
             if (intent.getExtras() != null) {
@@ -29,19 +39,24 @@ public class Principal extends AppCompatActivity {
                 if (object != null) {
                     if (object instanceof MyInfo) {
                         myInfo = (MyInfo) object;
-                        textView.setText("Bienvenid@ a la app, " + myInfo.getUsuario());
                     }
                 }
             }
         }
-        Button buttonvolverlogin = findViewById(R.id.buttonvolver);
 
-        buttonvolverlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Principal.this, Login.class);
-                startActivity(intent);
-            }
-        });
+        listView = (ListView) findViewById(R.id.listViewId);
+        list = new ArrayList<String>();
+        for( int i = 0; i < 100; i++)
+        {
+            list.add( String.format( "Contraseña %d" , i + 1 ) );
+        }
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.activity_list_view,R.id.editTextContra, list );
+        listView.setAdapter(arrayAdapter);
+
+
+
+
+
+
     }
 }

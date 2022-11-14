@@ -14,6 +14,6 @@
     <color name="blue">#4B90C0</color>
     <color name="light_gray">#F0F2F3</color>
     <color name="second_text">#808080</color>
-
+    <color name="eliminar">#FF6666</color>
 
 </resources>

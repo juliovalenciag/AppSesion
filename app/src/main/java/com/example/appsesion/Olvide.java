@@ -14,7 +14,7 @@ public class Olvide extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_olvide);
 
-        Button buttonLogin = findViewById(R.id.buttonLogin);
+        Button buttonLogin = findViewById(R.id.editarId);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override

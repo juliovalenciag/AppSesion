@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +13,7 @@ import android.widget.Toast;
 import com.example.appsesion.json.MyInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import java.io.Serializable;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -74,10 +71,10 @@ public class Login extends AppCompatActivity {
         });
 */
         Button buttonRegistro = findViewById(R.id.buttonRegistro);
-        Button buttonLogin = findViewById(R.id.buttonLogin);
-        Button buttonOlvide = findViewById(R.id.buttonOlvide);
-        EditText usuario = findViewById(R.id.usuariologin);
-        EditText contra = findViewById(R.id.contrasenalogin);
+        Button buttonLogin = findViewById(R.id.editarId);
+        Button buttonOlvide = findViewById(R.id.eliminarId);
+        EditText usuario = findViewById(R.id.editTextUsr);
+        EditText contra = findViewById(R.id.editTextContra);
         Read();
         json2List(json);
         buttonLogin.setOnClickListener(new View.OnClickListener() {

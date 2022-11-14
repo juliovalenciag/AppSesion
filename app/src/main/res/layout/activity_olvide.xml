@@ -93,7 +93,7 @@
                 android:text="Repetir contraseña" />
 
             <EditText
-                android:id="@+id/contrasenalogin"
+                android:id="@+id/editTextContra"
                 android:layout_width="325dp"
                 android:layout_height="52dp"
                 android:layout_gravity="center"
@@ -107,7 +107,7 @@
                 android:paddingEnd="15dp" />
 
             <Button
-                android:id="@+id/buttonLogin"
+                android:id="@+id/editarId"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
