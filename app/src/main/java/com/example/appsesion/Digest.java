@@ -1,8 +1,13 @@
 package com.example.appsesion;
 
+import androidx.core.util.PatternsCompat;
+
+import com.example.appsesion.json.MyInfo;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 public class Digest {
     public static final String TAG = "Digest";
@@ -39,5 +44,52 @@ public class Digest {
             hexChars[j * 2 + 1] = HEX_ARRAY[v & 0x0F];
         }
         return new String(hexChars);
+    }
+
+    //Meto aqui metodos para no crear otra clase
+    public static boolean validarEmail(String email){
+        boolean bandera;
+        if(email.isEmpty()){
+            bandera=false;
+        }else{
+            if(PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()){
+                bandera=true;
+            }else{
+                bandera=false;
+            }
+        }
+        return bandera;
+    }
+    public static boolean usuarios(List<MyInfo> list, String usr){
+        boolean bandera = false;
+        for(MyInfo informacion : list){
+            if(informacion.getUsuario().equals(usr)){
+                bandera=true;
+            }
+        }
+        return bandera;
+    }
+    public static void fillInfo(MyInfo info){
+        info.setUsuario(Registro.usr);
+        String pass = Registro.password;
+        info.setPassword(pass);
+        info.setCel(Registro.numero);
+        info.setFecha(Registro.fecha);
+        info.setMedios(Registro.box);
+        info.setCorreo(Registro.email);
+        info.setLugar(Registro.lugar);
+        info.setGenero(Registro.activado);
+    }
+    public static void vaciaJson(String json){
+        json = null;
+    }
+    public static void encuentra(String cadena){
+        for(MyInfo info: Olvide.list){
+            if(Login.usr.equals(info.getUsuario())){
+                cadena = "El usuario existe, recuerde la contraseña";
+            }else{
+                cadena = "El usuario no existe, recuerde todo";
+            }
+        }
     }
 }

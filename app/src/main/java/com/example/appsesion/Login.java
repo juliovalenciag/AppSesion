@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.appsesion.MyDesUtil.MyDesUtil;
 import com.example.appsesion.json.MyInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -25,16 +26,25 @@ import java.util.List;
 public class Login extends AppCompatActivity {
 
 
-    private List<MyInfo> list;
-    public static String TAG = "Datos";
+    public static final String KEY = "+4xij6jQRSBdCymMxweza/uMYo+o0EUg";
+    private String testClaro = "Hola mundo";
+    private String testDesCifrado;
 
+    public String correo;
+    public String mensaje;
 
+    public  static List<MyInfo> list;
+    public static String TAG = "mensaje";
+    public static String TOG = "error";
+    public static String json = null;
     public static String usr,pswd;
+    public MyDesUtil myDesUtil= new MyDesUtil().addStringKeyBase64(KEY);
 
-    String json = null;
+
 
     EditText contra;
     boolean contraVisible;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,21 +80,25 @@ public class Login extends AppCompatActivity {
             }
         });
 */
-        Button buttonRegistro = findViewById(R.id.buttonRegistro);
-        Button buttonLogin = findViewById(R.id.editarId);
-        Button buttonOlvide = findViewById(R.id.eliminarId);
+        Button buttonRegistro = findViewById(R.id.buttonEd);
+        Button buttonLogin = findViewById(R.id.buttonRe);
+        Button buttonOlvide = findViewById(R.id.buttonEl);
         EditText usuario = findViewById(R.id.editTextUsr);
         EditText contra = findViewById(R.id.editTextContra);
+
         Read();
+
         json2List(json);
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 usr = String.valueOf(usuario.getText());
-                pswd = Digest.bytesToHex(Digest.createSha1(String.valueOf(contra.getText())));
+                pswd = String.valueOf(contra.getText());
                 acceso(usr , pswd);
             }
         });
+
         buttonRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,8 +127,11 @@ public class Login extends AppCompatActivity {
         try {
             fileInputStream = new FileInputStream(file);
             fileInputStream.read(bytes);
-            json=new String(bytes);
-            Log.d(TAG,json);
+            json = new String(bytes);
+            json = myDesUtil.desCifrar(json);
+            if(json != null) {
+                Log.d(TAG, json);
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -125,7 +142,7 @@ public class Login extends AppCompatActivity {
     public void json2List( String json )
     {
         Gson gson = null;
-        String datos = null;
+        String mensaje = null;
         if (json == null || json.length() == 0)
         {
             Toast.makeText(getApplicationContext(), "Error json null or empty", Toast.LENGTH_LONG).show();

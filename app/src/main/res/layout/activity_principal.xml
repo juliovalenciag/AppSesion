@@ -37,23 +37,122 @@
                     android:text="Contraseñas guardadas"
                     android:textColor="@color/dark_blue" />
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingActionButton"
+                <Button
+                    android:id="@+id/buttonAd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:backgroundTint="#D9D9D9"
-                    android:clickable="true"
                     android:foregroundGravity="center_vertical"
                     android:outlineAmbientShadowColor="@color/dark_blue"
                     android:outlineSpotShadowColor="@color/dark_blue"
                     android:paddingEnd="0dp"
                     android:tint="#D9D9D9"
+                    android:text="+"
                     app:backgroundTintMode="add"
-                    app:borderWidth="1dp"
+
+                    app:borderWidth="0dp"
                     app:rippleColor="#D9D9D9"
                     app:srcCompat="@drawable/ic_baseline_add_24" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="362dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.427">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="Contraseña guardada"
+                    android:textAlignment="center"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="20dp"
+                    android:typeface="normal" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="325dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/usuarioLabel" />
+
+                <EditText
+                    android:id="@+id/editTextUsr"
+                    android:layout_width="325dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/bgrey"
+                    android:ems="10"
+                    android:hint="Usuario"
+                    android:inputType="textPersonName"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp" />
+
+                <TextView
+                    android:id="@+id/contrasenaTextView"
+                    android:layout_width="326dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/contrasenaLabel" />
+
+                <EditText
+                    android:id="@+id/editTextContra"
+                    android:layout_width="325dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/bgrey"
+                    android:ems="10"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:longClickable="false"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp" />
+
+                <Button
+                    android:id="@+id/buttonEl"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="200dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="Eliminar"
+                    android:textColor="@color/eliminar"
+                    android:textSize="12dp" />
+
+                <Button
+                    android:id="@+id/buttonEd"
+                    android:layout_width="280dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0dp"
+                    android:backgroundTint="@color/dark_blue"
+                    android:text="Editar" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

@@ -19,6 +19,8 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.appsesion.MyDesUtil.MyDesUtil;
+import com.example.appsesion.json.MyData;
 import com.example.appsesion.json.MyInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -33,29 +35,39 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Registro extends AppCompatActivity {
+public class Registro extends AppCompatActivity  {
 
     private Button registrarbttn;
 
     private static final String TAG = "MainActivity";
     public static final String archivo = "archivo.json";
+    public static String usr,password,email,numero,fecha,lugar,nom;
 
+    public static String[] box = new String[4];
     EditText contra;
     boolean contraVisible;
 
+
+
     String json = null;
-    String usr = null;
-    String password=null;
-    String email = null;
+
 
 
     public static boolean activado;
     public static List<MyInfo> list =new ArrayList<MyInfo>();
 
+    public static List<MyData> lista;
+    public static final String KEY = "+4xij6jQRSBdCymMxweza/uMYo+o0EUg";
+    public MyDesUtil myDesUtil= new MyDesUtil().addStringKeyBase64(KEY);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+
+        lista= new ArrayList<>();
+        MyData myData=null;
+
         Spinner spinner = findViewById(R.id.spinnerlugares);
         String [] lugares = {"Despliegue","Estado de México","Ciudad de México","Otro estado"};
 
@@ -76,6 +88,7 @@ public class Registro extends AppCompatActivity {
         CheckBox box1 = findViewById(R.id.checkBox1);
         CheckBox box2 = findViewById(R.id.checkBox2);
         CheckBox box3 = findViewById(R.id.checkBox3);
+
         Read();
         json2List(json);
         loginbttn.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +98,7 @@ public class Registro extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         registrarbttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,31 +141,19 @@ public class Registro extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Completa los campos", Toast.LENGTH_LONG).show();
 
                 }else{
-                    if(validarEmail(email)){
+                    if(Digest.validarEmail(email)){
                         if(list.isEmpty()){
                             Log.d(TAG,"Lleno");
-                            info.setUsuario(usr);
-                            info.setPassword(Digest.bytesToHex(Digest.createSha1(String.valueOf(contrasena.getText()))));
-                            info.setCel(String.valueOf(num.getText()));
-                            info.setFecha(String.valueOf(fechanac.getText()));
-                            info.setMedios(box);
-                            info.setCorreo(String.valueOf(mail.getText()));
-                            info.setLugar(spinner.getSelectedItem().toString());
-                            info.setGenero(activado);
+                            Digest.fillInfo(info);
                             List2Json(info,list);
                         }else{
-                            if(usuarios(list,usr)){
+                            if(Digest.usuarios(list,usr)){
                                 Log.d(TAG,"Usuario ya existente");
-                                Toast.makeText(getApplicationContext(), "El nombre de usuario ya existe", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "El usuario ya existe", Toast.LENGTH_LONG).show();
                             }else{
-                                info.setUsuario(usr);
-                                info.setPassword(Digest.bytesToHex(Digest.createSha1(String.valueOf(contrasena.getText()))));
-                                info.setCel(String.valueOf(num.getText()));
-                                info.setFecha(String.valueOf(fechanac.getText()));
-                                info.setMedios(box);
-                                info.setCorreo(String.valueOf(mail.getText()));
-                                info.setLugar(spinner.getSelectedItem().toString());
-                                info.setGenero(activado);
+                                Digest.fillInfo(info);
+
+                                info.setContras(lista);
                                 List2Json(info,list);
                             }
                         }
@@ -164,46 +166,10 @@ public class Registro extends AppCompatActivity {
         });
 
     }
-    public boolean validarEmail(String email){
-        boolean bandera;
-        if(email.isEmpty()){
-            bandera=false;
-        }else{
-            if(PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()){
-                bandera=true;
-            }else{
-                bandera=false;
-            }
-        }
-        return bandera;
-    }
-    public boolean usuarios(List<MyInfo> list,String usr){
-        boolean bandera = false;
-        for(MyInfo informacion : list){
-            if(informacion.getUsuario().equals(usr)){
-                bandera=true;
-            }
-        }
-        return bandera;
-    }
-    public void Objet2Json(MyInfo info){
-        Gson gson =null;
-        String json= null;
-        String mensaje = null;
-        gson =new Gson();
-        json = gson.toJson(info);
-        if (json != null) {
-            Log.d(TAG, json);
-            mensaje = "object2Json OK";
-        } else {
-            mensaje = "Error object2Json";
-        }
-        Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
-    }
     public void List2Json(MyInfo info,List<MyInfo> list){
-        Gson gson =null;
-        String json= null;
-        gson =new Gson();
+        Gson gson = null;
+        String json = null;
+        gson = new Gson();
         list.add(info);
         json =gson.toJson(list, ArrayList.class);
         if (json == null)
@@ -212,6 +178,8 @@ public class Registro extends AppCompatActivity {
         }
         else
         {
+            Log.d(TAG, json);
+            json=myDesUtil.cifrar(json);
             Log.d(TAG, json);
             writeFile(json);
         }
@@ -225,7 +193,7 @@ public class Registro extends AppCompatActivity {
             fileOutputStream = new FileOutputStream( file );
             fileOutputStream.write( text.getBytes(StandardCharsets.UTF_8) );
             fileOutputStream.close();
-            Log.d(TAG, "Datos:");
+            Log.d(TAG, "Hola");
             return true;
         }
         catch (FileNotFoundException e)
@@ -241,6 +209,7 @@ public class Registro extends AppCompatActivity {
     private File getFile(){
         return new File(getDataDir(),archivo);
     }
+
     public boolean Read(){
         if(!isFileExits()){
             return false;
@@ -253,7 +222,10 @@ public class Registro extends AppCompatActivity {
             fileInputStream = new FileInputStream(file);
             fileInputStream.read(bytes);
             json=new String(bytes);
-            Log.d(TAG,json);
+            json= myDesUtil.desCifrar(json);
+            if(json != null) {
+                Log.d(TAG, json);
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -261,6 +233,8 @@ public class Registro extends AppCompatActivity {
         }
         return true;
     }
+
+
     private boolean isFileExits( )
     {
         File file = getFile( );
@@ -270,10 +244,11 @@ public class Registro extends AppCompatActivity {
         }
         return file.isFile() && file.exists();
     }
+
     public void json2List( String json )
     {
         Gson gson = null;
-        String datos = null;
+        String mensaje = null;
         if (json == null || json.length() == 0)
         {
             Toast.makeText(getApplicationContext(), "Error, json nulo o vacío", Toast.LENGTH_LONG).show();
@@ -288,5 +263,6 @@ public class Registro extends AppCompatActivity {
             return;
         }
     }
+
 
 }

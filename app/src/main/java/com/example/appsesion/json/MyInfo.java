@@ -1,6 +1,8 @@
 package com.example.appsesion.json;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyInfo implements Serializable {
     private String usuario;
@@ -11,6 +13,16 @@ public class MyInfo implements Serializable {
     private String fecha;
     private String cel;
     private String lugar;
+
+    public List<MyData> getContras() {
+        return contras;
+    }
+
+    public void setContras(List<MyData> contras) {
+        this.contras = contras;
+    }
+
+    private List<MyData> contras= new ArrayList<>();
 
     public String getLugar() {
         return lugar;

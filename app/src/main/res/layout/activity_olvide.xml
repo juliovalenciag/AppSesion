@@ -67,30 +67,30 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
-                android:text="Nueva Contraseña" />
+                android:text="Usuario" />
 
             <EditText
-                android:id="@+id/nuevacontrasena"
+                android:id="@+id/usr"
                 android:layout_width="325dp"
                 android:layout_height="52dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bgrey"
                 android:ems="10"
-                android:hint="Contraseña"
-                android:inputType="textPassword"
+                android:hint="Usuario"
+                android:inputType="textPersonName"
                 android:longClickable="false"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp" />
 
             <TextView
-                android:id="@+id/repetircontrasena"
+                android:id="@+id/mail"
                 android:layout_width="325dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
-                android:text="Repetir contraseña" />
+                android:text="Correo" />
 
             <EditText
                 android:id="@+id/editTextContra"
@@ -100,20 +100,20 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bgrey"
                 android:ems="10"
-                android:hint="Contraseña"
-                android:inputType="textPassword"
+                android:hint="Correo"
+                android:inputType="textEmailAddress"
                 android:longClickable="false"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp" />
 
             <Button
-                android:id="@+id/editarId"
+                android:id="@+id/buttonEd"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/dark_blue"
-                android:text="Iniciar Sesion" />
+                android:text="Recuperar contraseña" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
