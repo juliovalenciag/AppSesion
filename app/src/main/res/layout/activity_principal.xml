@@ -37,24 +37,18 @@
                     android:text="Contraseñas guardadas"
                     android:textColor="@color/dark_blue" />
 
-                <Button
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/buttonAd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:backgroundTint="#D9D9D9"
                     android:foregroundGravity="center_vertical"
-                    android:outlineAmbientShadowColor="@color/dark_blue"
-                    android:outlineSpotShadowColor="@color/dark_blue"
                     android:paddingEnd="0dp"
-                    android:tint="#D9D9D9"
-                    android:text="+"
-                    app:backgroundTintMode="add"
-
+                    android:background="@color/light_gray"
+                    android:backgroundTint="@color/aqua_blue"
                     app:borderWidth="0dp"
-                    app:rippleColor="#D9D9D9"
-                    app:srcCompat="@drawable/ic_baseline_add_24" />
+                    app:srcCompat="@drawable/addicon" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
