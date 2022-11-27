@@ -83,10 +83,10 @@ public class Principal extends AppCompatActivity {
         button.setEnabled(false);
         button1.setEnabled(false);
         if (listo.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Para agregar una contraseña de clic en el menú o en el boton +", Toast.LENGTH_LONG).show();
-            Toast.makeText(getApplicationContext(), "Escriba en los campos", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Para agregar una contraseña de clic en el menú o en el (+)", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Llene los campos", Toast.LENGTH_LONG).show();
         }
-        Toast.makeText(getApplicationContext(), "Para modificar o eliminar una contraseña de click en ella", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Da click en las contraseñas para editar o eliminar", Toast.LENGTH_LONG).show();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -128,7 +128,7 @@ public class Principal extends AppCompatActivity {
                     listView.setAdapter(myAdapter);
                     editText.setText("");
                     editText1.setText("");
-                    Toast.makeText(getApplicationContext(), "Se modificó la contraseña", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Se editó la contraseña", Toast.LENGTH_LONG).show();
                     button.setEnabled(false);
                     button1.setEnabled(false);
                 }
@@ -172,7 +172,7 @@ public class Principal extends AppCompatActivity {
             String usr = String.valueOf(editText.getText());
             String contra = String.valueOf(editText1.getText());
             if (usr.equals("") || contra.equals("")) {
-                Toast.makeText(getApplicationContext(), "Llena los campos", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Llene los campos", Toast.LENGTH_LONG).show();
             } else {
                 MyData myData = new MyData();
                 myData.setContra(contra);

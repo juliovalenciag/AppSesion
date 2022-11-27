@@ -147,9 +147,9 @@ public class Registro extends AppCompatActivity  {
                             Digest.fillInfo(info);
                             List2Json(info,list);
                         }else{
-                            if(Digest.usuarios(list,usr)){
-                                Log.d(TAG,"Usuario ya existente");
-                                Toast.makeText(getApplicationContext(), "El usuario ya existe", Toast.LENGTH_LONG).show();
+                            if(Digest.usuarios(list,usr,email)){
+                                Log.d(TAG,"Campos ocupados");
+                                Toast.makeText(getApplicationContext(), "El usuario o correo ya existe", Toast.LENGTH_LONG).show();
                             }else{
                                 Digest.fillInfo(info);
 

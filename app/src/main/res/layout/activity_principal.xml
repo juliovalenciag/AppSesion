@@ -37,16 +37,23 @@
                     android:text="Contraseñas guardadas"
                     android:textColor="@color/dark_blue" />
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                <Button
                     android:id="@+id/buttonAd"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.AppCompat.Button.Small"
+                    android:layout_width="15dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="15dp"
                     android:layout_weight="1"
-                    android:foregroundGravity="center_vertical"
-                    android:paddingEnd="0dp"
+                    android:width="1dp"
                     android:background="@color/light_gray"
                     android:backgroundTint="@color/aqua_blue"
+                    android:foregroundGravity="center_vertical"
+                    android:shadowRadius="@integer/material_motion_duration_medium_2"
+                    android:text="+"
+                    android:textSize="20dp"
+                    android:textColor="@color/white"
+                    android:visibility="visible"
                     app:borderWidth="0dp"
                     app:srcCompat="@drawable/addicon" />
 

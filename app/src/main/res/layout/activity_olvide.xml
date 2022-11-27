@@ -84,7 +84,7 @@
                 android:paddingEnd="15dp" />
 
             <TextView
-                android:id="@+id/mail"
+                android:id="@+id/textViewCorreo"
                 android:layout_width="325dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -93,7 +93,7 @@
                 android:text="Correo" />
 
             <EditText
-                android:id="@+id/editTextContra"
+                android:id="@+id/mail"
                 android:layout_width="325dp"
                 android:layout_height="52dp"
                 android:layout_gravity="center"
@@ -114,6 +114,15 @@
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/dark_blue"
                 android:text="Recuperar contraseña" />
+
+            <Button
+                android:id="@+id/buttonlogin"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/aqua_blue"
+                android:textSize="12dp"
+                android:text="Iniciar sesión" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

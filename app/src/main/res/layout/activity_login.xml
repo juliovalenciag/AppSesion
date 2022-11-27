@@ -99,7 +99,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/dark_blue"
+                android:backgroundTint="@color/aqua_blue"
                 android:text="Iniciar Sesion" />
 
             <Button
