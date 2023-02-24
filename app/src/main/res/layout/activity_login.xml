@@ -93,7 +93,7 @@
                 android:paddingEnd="15dp" />
 
             <Button
-                android:id="@+id/buttonRe"
+                android:id="@+id/buttonpr"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"

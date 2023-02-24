@@ -46,7 +46,7 @@ public class DbPass extends UsuariosDBService {
         List<MyData>contras = null;
         MyData myData = null;
         sqLiteDatabase = getReadableDatabase();
-        cursor = sqLiteDatabase.rawQuery("SELECT*FROM " + TABLE_PASS +" WHERE id = "+id,null);
+        cursor = sqLiteDatabase.rawQuery("SELECT*FROM " + TABLE_PASS + " WHERE id = " + id,null);
         if( cursor == null )
         {
             return new ArrayList<MyData>();

@@ -71,6 +71,7 @@ public class Principal extends AppCompatActivity {
         list = Login.list;
 
  */
+        Button buttonApi = findViewById(R.id.buttonApi);
         editText = findViewById(R.id.editTextUsr);
         editText1 = findViewById(R.id.editTextContra);
         button = findViewById(R.id.buttonEl);
@@ -107,6 +108,14 @@ public class Principal extends AppCompatActivity {
                 button.setEnabled(true);
                 button1.setEnabled(true);
                 Toast.makeText(getApplicationContext(), "Guarde Cambios", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        buttonApi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Principal.this , Noticias.class);
+                startActivity(intent);
             }
         });
 
@@ -196,6 +205,8 @@ public class Principal extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu Principal) {
         boolean flag = false;
@@ -256,7 +267,8 @@ public class Principal extends AppCompatActivity {
             return true;
         }
         if (id == R.id.itemF){
-            Intent intent = new Intent(Principal.this,FootBallApi.class);
+            Toast.makeText(getApplicationContext(), "Noticias API", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Principal.this,Noticias.class);
             startActivity(intent);
             return true;
         }

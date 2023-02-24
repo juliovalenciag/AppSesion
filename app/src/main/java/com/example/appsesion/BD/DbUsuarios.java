@@ -1,5 +1,6 @@
 package com.example.appsesion.BD;
 
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -109,13 +110,13 @@ public class DbUsuarios extends UsuariosDBService{
         return null;
     }
 
-    public MyInfo GetUsuario(String usr,String mail){
+    public MyInfo GetUsuario(String usr,String Email){
         MyInfo info = new MyInfo();
         UsuariosDBService usuariosDBService = new UsuariosDBService(context);
         SQLiteDatabase db = usuariosDBService.getReadableDatabase();
         Cursor cursor = null;
-        String query = "SELECT * FROM table_usuarios WHERE usuario = ? AND mail = ?";
-        String[] args = {usr,mail};
+        String query = "SELECT * FROM table_usuarios WHERE usuario = ? AND email = ?";
+        String[] args = {usr,Email};
 
         cursor = db.rawQuery(query,args);
         if (cursor.moveToFirst()) {
