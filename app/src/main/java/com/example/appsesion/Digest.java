@@ -73,12 +73,15 @@ public class Digest {
         info.setUsuario(Registro.usr);
         String pass = Registro.password;
         info.setPassword(pass);
+        info.setBox1(Registro.boxes1);
+        info.setBox2(Registro.boxes2);
+        info.setBox3(Registro.boxes3);
         info.setCel(Registro.numero);
         info.setFecha(Registro.fecha);
         info.setMedios(Registro.box);
         info.setCorreo(Registro.email);
         info.setLugar(Registro.lugar);
-        info.setGenero(Registro.activado);
+        info.setGen(Registro.on);
     }
     public static void vaciaJson(String json){
         json = null;
@@ -86,9 +89,9 @@ public class Digest {
     public static void encuentra(String cadena){
         for(MyInfo info: Olvide.list){
             if(Login.usr.equals(info.getUsuario())){
-                cadena = "El usuario existe, recuerde la contraseña";
+                cadena = "El usuario existe, pruebe con otra contraseña";
             }else{
-                cadena = "El usuario no existe, recuerde todo";
+                cadena = "El usuario no existe, intentelo de nuevo";
             }
         }
     }

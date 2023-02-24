@@ -69,7 +69,7 @@ public class MyAdapter extends BaseAdapter implements Serializable {
         view = layoutInflater.inflate(R.layout.activity_list_view, null );
         textView= view.findViewById(R.id.textViewUsr);
         textView1=view.findViewById(R.id.textViewPass);
-        textView1.setText(String.valueOf(list.get(i).getContra()));
+        textView1.setText(String.valueOf(list.get(i).getPass()));
         textView.setText(String.valueOf(list.get(i).getUsuario()));
         return view;
     }

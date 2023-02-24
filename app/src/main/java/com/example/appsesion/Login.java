@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.appsesion.BD.DbUsuarios;
 import com.example.appsesion.MyDesUtil.MyDesUtil;
 import com.example.appsesion.json.MyInfo;
 import com.google.gson.Gson;
@@ -38,6 +39,8 @@ public class Login extends AppCompatActivity {
     public static String TOG = "error";
     public static String json = null;
     public static String usr,pswd;
+
+    private Button buttonRegistro, buttonLogin, buttonOlvide;
     public MyDesUtil myDesUtil= new MyDesUtil().addStringKeyBase64(KEY);
 
 
@@ -80,22 +83,25 @@ public class Login extends AppCompatActivity {
             }
         });
 */
-        Button buttonRegistro = findViewById(R.id.buttonEd);
-        Button buttonLogin = findViewById(R.id.buttonRe);
-        Button buttonOlvide = findViewById(R.id.buttonEl);
+        buttonRegistro = findViewById(R.id.buttonEd);
+        buttonLogin = findViewById(R.id.buttonRe);
+        buttonOlvide = findViewById(R.id.buttonEl);
         EditText usuario = findViewById(R.id.editTextUsr);
         EditText contra = findViewById(R.id.editTextContra);
 
-        Read();
+      /*
 
+        Read();
         json2List(json);
+
+       */
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 usr = String.valueOf(usuario.getText());
                 pswd = String.valueOf(contra.getText());
-                acceso(usr , pswd);
+                ingresar(usr , pswd);
             }
         });
 
@@ -116,6 +122,7 @@ public class Login extends AppCompatActivity {
         });
 
     }
+    /*
     public boolean Read(){
         if(!isFileExits()){
             return false;
@@ -171,7 +178,10 @@ public class Login extends AppCompatActivity {
         }
         return file.isFile() && file.exists();
     }
-    public void acceso(String usr , String pswd){
+
+     */
+    public void ingresar(String usr , String pswd){
+        /*
         int i=0;
         for(MyInfo myInfo : list){
             if(myInfo.getUsuario().equals(usr)&&myInfo.getPassword().equals(pswd)){
@@ -183,6 +193,26 @@ public class Login extends AppCompatActivity {
         }
         if(i==0){
             Toast.makeText(getApplicationContext(), "El usuario o contraseña son incorrectos", Toast.LENGTH_LONG).show();
+        }
+
+         */
+        if(usr.equals("")||pswd.equals("")){
+            Toast.makeText(getApplicationContext(), "Completa los campos", Toast.LENGTH_LONG).show();
+        }else{
+            DbUsuarios dbUsuarios = new DbUsuarios(Login.this);
+            MyInfo myInfo = dbUsuarios.GetUsuario(usr);
+            if(myInfo!=null){
+                if(myInfo.getPassword().equals(pswd)){
+                    Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(Login.this, Principal.class);
+                    intent.putExtra("Objeto", myInfo);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_LONG).show();
+                }
+            }else{
+                Toast.makeText(getApplicationContext(), "No se ha encontró el usuario", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }

@@ -50,7 +50,6 @@
         android:id="@+id/MorseTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
         android:lineSpacingExtra="8sp"
         android:text="MORSE"
         android:textAlignment="center"

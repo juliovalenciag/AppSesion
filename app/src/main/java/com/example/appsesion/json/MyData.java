@@ -3,16 +3,23 @@ package com.example.appsesion.json;
 import java.io.Serializable;
 
 public class MyData implements Serializable {
-    private String contra;
+    private String pass;
+
+    private int id_pass;
     private int image;
     private String usuario;
+    private int id_usr;
 
-    public String getContra() {
-        return contra;
+    public int getId_pass() { return id_pass; }
+
+    public void setId_pass(int id_pass){this.id_pass = id_pass;}
+
+    public String getPass() {
+        return pass;
     }
 
-    public void setContra(String contra) {
-        this.contra = contra;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public int getImage() {
@@ -30,4 +37,8 @@ public class MyData implements Serializable {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+
+    public int getId_usr(){return id_usr;}
+
+    public void setId_usr(int id_usr){this.id_usr = id_usr;}
 }

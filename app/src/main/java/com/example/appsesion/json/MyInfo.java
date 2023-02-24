@@ -5,15 +5,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyInfo implements Serializable {
+
+    private int id_usr;
     private String usuario;
     private String password;
     private String correo;
+    private String nombre;
     private String[] medios;
+
+    private int gen;
+    private String box1;
+    private String box2;
+    private String box3;
     private Boolean genero;
     private String fecha;
     private String cel;
     private String lugar;
 
+    private int batiz;
+
+    public int getId_usr(){return id_usr;}
+
+    public void setId_usr(int id_usr){this.id_usr = id_usr;}
     public List<MyData> getContras() {
         return contras;
     }
@@ -24,6 +37,14 @@ public class MyInfo implements Serializable {
 
     private List<MyData> contras= new ArrayList<>();
 
+    public String getBox1(){return box1;}
+    public void setBox1(String box1){this.box1 = box1;}
+
+    public String getBox2(){return box2;}
+    public void setBox2(String box1){this.box2 = box2;}
+
+    public String getBox3(){return box3;}
+    public void setBox3(String box1){this.box3 = box3;}
     public String getLugar() {
         return lugar;
     }
@@ -32,7 +53,8 @@ public class MyInfo implements Serializable {
         this.lugar = lugar;
     }
 
-
+    public int getBatiz(){return batiz;}
+    public void setBatiz(int batiz){this.batiz = batiz;}
     public MyInfo() {
     }
 
@@ -76,6 +98,9 @@ public class MyInfo implements Serializable {
         this.genero = genero;
     }
 
+    public int getGen(){return gen;}
+
+    public void setGen(int gen){this.gen = gen;}
     public String getFecha() {
         return fecha;
     }
@@ -91,4 +116,8 @@ public class MyInfo implements Serializable {
     public void setCel(String cel) {
         this.cel = cel;
     }
+
+    public String getNombre(){return nombre;}
+
+    public void setNombre(String nombre) {this.nombre = nombre;}
 }

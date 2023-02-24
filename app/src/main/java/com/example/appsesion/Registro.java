@@ -17,8 +17,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.appsesion.BD.DbUsuarios;
 import com.example.appsesion.MyDesUtil.MyDesUtil;
 import com.example.appsesion.json.MyData;
 import com.example.appsesion.json.MyInfo;
@@ -38,23 +40,29 @@ import java.util.List;
 public class Registro extends AppCompatActivity  {
 
     private Button registrarbttn;
-
+    private CheckBox box1, box2, box3;
+    private Spinner spinner;
+    private RadioButton r1,r2;
     private static final String TAG = "MainActivity";
     public static final String archivo = "archivo.json";
-    public static String usr,password,email,numero,fecha,lugar,nom;
+    public static String usr,password,email,numero,fecha,lugar;
 
     public static String[] box = new String[4];
     EditText contra;
     boolean contraVisible;
 
-
+    private EditText usuario,pswd,mail,num,fec;
+    public static String boxes1;
+    public static String boxes2;
+    public static String boxes3;
 
     String json = null;
 
+    public static int on;
 
 
-    public static boolean activado;
     public static List<MyInfo> list =new ArrayList<MyInfo>();
+
 
     public static List<MyData> lista;
     public static final String KEY = "+4xij6jQRSBdCymMxweza/uMYo+o0EUg";
@@ -72,25 +80,26 @@ public class Registro extends AppCompatActivity  {
         String [] lugares = {"Despliegue","Estado de México","Ciudad de México","Otro estado"};
 
 
-
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, lugares);
         spinner.setAdapter(adapter);
         registrarbttn = findViewById(R.id.registrarbttn);
         Button loginbttn = findViewById(R.id.loginbttn);
-        EditText usuario = findViewById(R.id.usuario);
-        EditText contrasena = findViewById(R.id.contrasena);
-        EditText mail = findViewById(R.id.email);
-        EditText num = findViewById(R.id.numtel);
-        EditText fechanac = findViewById(R.id.fechanac);
-        RadioButton r1 = findViewById(R.id.radioButton1);
-        RadioButton r2 = findViewById(R.id.radioButton2);
-        CheckBox box1 = findViewById(R.id.checkBox1);
-        CheckBox box2 = findViewById(R.id.checkBox2);
-        CheckBox box3 = findViewById(R.id.checkBox3);
+        usuario = findViewById(R.id.usuario);
+        pswd = findViewById(R.id.contrasena);
+        mail = findViewById(R.id.email);
+        num = findViewById(R.id.numtel);
+        fec = findViewById(R.id.fechanac);
+        r1 = findViewById(R.id.radioButton1);
+        r2 = findViewById(R.id.radioButton2);
+        box1 = findViewById(R.id.checkBox1);
+        box2 = findViewById(R.id.checkBox2);
+        box3 = findViewById(R.id.checkBox3);
 
+        /*
         Read();
         json2List(json);
+
+         */
         loginbttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,32 +115,36 @@ public class Registro extends AppCompatActivity  {
                 MyInfo info= new MyInfo();
 
                 usr = String.valueOf(usuario.getText());
-                password = String.valueOf(contrasena.getText());
+                password = String.valueOf(pswd.getText());
                 email = String.valueOf(mail.getText());
+                numero = String.valueOf(num.getText());
+                fecha = String.valueOf(fec.getText());
+                lugar = spinner.getSelectedItem().toString();
 
                 String[] box = new String[3];
 
                 if(box1.isChecked()==true){
-                    box[0]="Email";
+                    boxes1="Email";
                 }else{
-                    box[0]="no";
+                    boxes1="No";
                 }
                 if(box2.isChecked()==true){
-                    box[1]="Teléfono";
+                    boxes2="Teléfono";
                 }else{
-                    box[1]="no";
+                    boxes2="No";
                 }
                 if(box3.isChecked()==true){
-                    box[2]="Redes Sociales";
+                    boxes3="Redes Sociales";
                 }else{
-                    box[2]="no";
+                    boxes3="no";
                 }
                 if(r1.isChecked()==true){
-                    activado=true;
+                    on=1;
                 }
                 if(r2.isChecked()==true){
-                    activado=false;
+                    on=1;
                 }
+
 
                 if(usr.equals("")||password.equals("")||email.equals("")){
                     Log.d(TAG,"Campos vacios");
@@ -142,6 +155,10 @@ public class Registro extends AppCompatActivity  {
 
                 }else{
                     if(Digest.validarEmail(email)){
+                        Digest.fillInfo(info);
+                        DbUsuarios dbUsuarios = new DbUsuarios(Registro.this);
+                        long id = dbUsuarios.saveUsr(info);
+                        /*
                         if(list.isEmpty()){
                             Log.d(TAG,"Lleno");
                             Digest.fillInfo(info);
@@ -154,8 +171,14 @@ public class Registro extends AppCompatActivity  {
                                 Digest.fillInfo(info);
 
                                 info.setContras(lista);
-                                List2Json(info,list);
+                               List2Json(info,list);
                             }
+                        }
+                         */
+                        if (id > 0){
+                            Toast.makeText(Registro.this, "Guardado",Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(Registro.this, "Error al guardar",Toast.LENGTH_LONG).show();
                         }
                     }else{
                         Toast.makeText(getApplicationContext(), "Introduzca un correo válido", Toast.LENGTH_LONG).show();
@@ -166,6 +189,7 @@ public class Registro extends AppCompatActivity  {
         });
 
     }
+    /*
     public void List2Json(MyInfo info,List<MyInfo> list){
         Gson gson = null;
         String json = null;
@@ -263,6 +287,6 @@ public class Registro extends AppCompatActivity  {
             return;
         }
     }
-
+*/
 
 }
